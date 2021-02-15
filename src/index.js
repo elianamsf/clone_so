@@ -67,8 +67,7 @@ app.post('/machines', (request, response) =>{
                     ['guestproperty',  'wait', `windows_${cloneNum}`, '/VirtualBox/GuestAdd/HostVerLastChecked'],
                     { shell :'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe'}
         );
-        // Esse comando vai mudar por que tem que ser o do Windows
-        execSync(`VBoxManage guestcontrol windows_${cloneNum} run --exe "C:\\windows\\system32\\cmd.exe" --username usuario --password senha -- cmd.exe/arg0 /C powershell "Start-Process -Verb RunAs cmd.exe '/c netsh interface ip set address name="Ethernet" static ${data.ip} 255.255.255.0 192.168.50.1'"`);
+        execSync(`VBoxManage guestcontrol windows_${cloneNum} run --exe "C:\\windows\\system32\\cmd.exe" --username usuario --password senha -- cmd.exe/arg0 /C powershell "Start-Process -Verb RunAs cmd.exe '/c netsh interface ip set address name="Ethernet" static ${ip} 255.255.255.0 192.168.50.1'"`);
         console.log(cloneNum);
         cloneNum++;
         console.log(cloneNum);
